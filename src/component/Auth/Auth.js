@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from "axios";
 import {connect} from 'react-redux';
 import { updateUserData } from '../../ducks/reducer';
+import './Auth.css';
 
 
 class Auth extends Component {
@@ -45,6 +46,8 @@ class Auth extends Component {
       })
       .then(console.log('registration submit'))
       .catch(err => console.log('front-end error', err));
+
+   this.props.history.push('/dashboard');    
   }
 
   async handleLogin() {
@@ -66,7 +69,9 @@ class Auth extends Component {
 
 
   render() {
+    const { updateUserData } = this.props;
     let {user} = this.props
+
     return (
       <div>
         <div className="input-box">
@@ -79,8 +84,10 @@ class Auth extends Component {
         </div>
         <div className="login-register-button">
         <br/>
-          <button onClick={this.handleLogin}>Login</button>
-          <button onClick={this.handleRegister}>Register</button>
+          {/* <button onClick={this.handleLogin}>Login</button> */}
+          <button onClick={ updateUserData(user) }>Login</button>
+          <button onClick={ () => updateUserData(user) }>Register</button>
+          {/* <button onClick={this.handleRegister}>Register</button> */}
         </div>
       </div>
     );

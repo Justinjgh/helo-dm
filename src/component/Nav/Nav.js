@@ -6,6 +6,7 @@ import { updateUserData } from '../../ducks/reducer';
 
 
 function Nav(props) {
+  console.log(props, 'mmaaah prroooppss!!!')
   return (
     <div>
       <Link to="/dashboard">
@@ -21,10 +22,13 @@ function Nav(props) {
   )
 };
 
-function mapStateToProps(state) {
-  return {
-    user: state.user,
-  }
-};
+// function mapStateToProps(state) {
+//   const { name, image } = state.user;
 
-export default connect(mapStateToProps, {updateUserData})(Nav);
+//   return {
+//     name,
+//     image,
+//   }
+// };
+
+export default connect(null, {updateUserData})(Nav);

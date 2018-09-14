@@ -1,0 +1,19 @@
+.input-box {
+ padding-top: 20px;
+ margin-top: 20px;
+ display: block;
+ margin: 30px;
+}
+
+.login-register-button {
+ display: block;
+ align-items: center;
+ padding-top: 20px;
+}
+
+button, input, optgroup, select, textarea {
+ margin: 15px;
+ font-family: inherit;
+ font-size: inherit;
+ line-height: inherit;
+}

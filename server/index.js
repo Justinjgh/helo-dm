@@ -9,11 +9,11 @@ session = require('express-session');
 
 const controller = require ('./controller');
 
-const { REACT_APP_DOMAIN, REACT_APP_CLIENT_ID, CLIENT_SECRET, SESSION_SECRET, CONNECTION_STRING } = process.env;
+const { REACT_APP_DOMAIN, REACT_APP_CLIENT_ID, CLIENT_SECRET, SESSION_SECRET, CONNECTION_STRING, SERVER_PORT } = process.env;
 
 const app = express();
 
-massive(process.env.CONNECTION_STRING)
+massive(CONNECTION_STRING)
   .then(db => {
    app.set('db', db)})
   .catch(err => console.log(err));
@@ -21,7 +21,7 @@ massive(process.env.CONNECTION_STRING)
 app.use(session ({
     secret: SESSION_SECRET,
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: true
   }))
   
 
@@ -35,15 +35,15 @@ app.post('/api/login-user', controller.login_user);
 
 
 app.get('/api/user-data', (req, res) => {
+  console.log(req.session.user, 'userrrrr')
   if (req.session.user) {
-    res.status(200).send(req.session.user);
+   res.status(200).send(req.session.user)
   } else {
-    res.status(401).send('Nice try sucka!');
+   res.status(401).send('Go log in')
   }
-});
+ });
 
 
-const SERVER_PORT = process.env.SERVER_PORT || 4000;
 app.listen(SERVER_PORT, () => {
   console.log(`Mayweather makin it rain on port: ${SERVER_PORT}!`);
 });
