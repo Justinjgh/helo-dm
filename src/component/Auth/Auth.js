@@ -19,6 +19,7 @@ class Auth extends Component {
       username: "",
       password: ""
     };
+    
     this.state = { username: "", password: "" };
     this.handleUsernameInput = this.handleUsernameInput.bind(this);
     this.handlePasswordInput = this.handlePasswordInput.bind(this);

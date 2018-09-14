@@ -2,7 +2,7 @@
 const axiso = require('axios');
 
 module.exports = {
-  register_user: (req, res, next) => {
+  register_user: (req, res) => {
     const db = req.app.get("db");
     let { username, password } = req.body;
     console.log('you are in!', req.body, username, password);
@@ -17,7 +17,7 @@ module.exports = {
     });
 },
 
-  login_user: (req, res, next) => {
+  login_user: (req, res) => {
     const db = req.app.get("db");
     let { username, password } = req.body;
 
@@ -28,7 +28,7 @@ module.exports = {
     })
     .catch(err => {
       console.log(err);
-      res.status(500).send(err);
+      res.status(500).send(err, 'errrooorrr!');
     });
   }
 };

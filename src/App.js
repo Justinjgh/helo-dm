@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 import './App.css';
 
@@ -8,7 +8,7 @@ import './App.css';
 // import Form from "./component/Form/Form";
 // import Dashboard from "./component/Dashboard/Dashboard";
 import Nav from "./component/Nav/Nav";
-import routes from "./routes";
+import route from "./route";
 
 
 class App extends Component {
@@ -24,7 +24,7 @@ class App extends Component {
          </nav> */}
 
        <Nav />
-       { routes }
+       { route }
       </div>
     );
   }
